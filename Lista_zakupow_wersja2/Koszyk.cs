@@ -1,0 +1,89 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lista_zakupow_wersja2
+{
+    class Koszyk : ICeny
+    {
+        List<Produkt> mojKoszyk;
+        public Koszyk()
+        {
+            mojKoszyk = new List<Produkt>();
+        }
+        
+            
+             
+        public void WyswietlKoszyk()
+        {
+            Console.WriteLine("W koszyku mamy:");
+            for (int i = 0; i < mojKoszyk.Count; i++)
+            {
+                Console.WriteLine($"Kod produktu: {mojKoszyk[i].KodProduktu} Nazwa produktu : {mojKoszyk[i].Nazwa} Opis produktu : {mojKoszyk[i].OpisProduktu} Cena: {mojKoszyk[i].Cena} zł Ilosc sztuk {mojKoszyk[i].Krotnosc} Wartosc w koszyku {mojKoszyk[i].Wartosc} zł ");
+            }
+
+        }
+        public void UsunZKoszyka(uint _kodUsuwanego)
+        {
+            for (int i = 0; i < mojKoszyk.Count; i++)
+            {
+                if (mojKoszyk[i].KodProduktu == _kodUsuwanego)
+                {
+                    mojKoszyk.RemoveAt(i);
+                }
+            }
+
+        }
+
+        public virtual void PodajCene()
+        {
+            decimal _sumaWartosci = 0;
+            for (int i = 0; i < mojKoszyk.Count; i++)
+            {
+                _sumaWartosci = _sumaWartosci + mojKoszyk[i].Wartosc;
+
+            }
+            Console.WriteLine($"Całkowita wartość koszyka wynosi: {_sumaWartosci}");
+
+        }
+        
+        public void SortujPoCenach()
+        {
+            mojKoszyk.Sort();
+        }
+        public void PodsumujKoszyk()
+        {
+            SortujPoCenach();
+            WyswietlKoszyk();
+            PodajCene();
+
+        }
+        public void DodajDoKoszyka(Produkt NowyProdukt)
+        {
+            bool _czyJuzJest = false;
+            for (int i = 0; i < mojKoszyk.Count; i++)
+            {
+                if (mojKoszyk[i].KodProduktu == NowyProdukt.KodProduktu)
+                {
+                    _czyJuzJest = true;
+                    mojKoszyk[i].ZwiekszIloscProduktu();
+                    mojKoszyk[i].PoliczNowaWartoscProduktu();
+                }
+                               
+            }
+            if (_czyJuzJest == false)
+            {
+                mojKoszyk.Add(NowyProdukt);
+                
+            }
+            else
+            {
+                Console.WriteLine("Dodałeś produkt który już jest w koszyku - zwiększam jego ilosc");
+            }
+        }
+
+        
+    }
+    }
