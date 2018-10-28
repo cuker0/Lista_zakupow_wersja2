@@ -27,12 +27,30 @@ namespace Lista_zakupow_wersja2
         }
         public void UsunZKoszyka(uint _kodUsuwanego)
         {
+            bool _sprawdzenieCzyJest = false;
             for (int i = 0; i < mojKoszyk.Count; i++)
             {
-                if (mojKoszyk[i].KodProduktu == _kodUsuwanego)
+                if (mojKoszyk[i].KodProduktu == _kodUsuwanego & mojKoszyk[i].Krotnosc == 1)
                 {
+                    Console.WriteLine($"Usuwam produkt o kodzie {mojKoszyk[i].KodProduktu}");
                     mojKoszyk.RemoveAt(i);
+                    mojKoszyk[i].PoliczNowaWartoscProduktu();
+                    _sprawdzenieCzyJest = true;
                 }
+                
+                if (mojKoszyk[i].KodProduktu == _kodUsuwanego & mojKoszyk[i].Krotnosc > 1)
+                {
+                    Console.WriteLine($"Zmniejszam ilość produktu o kodzie {mojKoszyk[i].KodProduktu}");
+                    mojKoszyk[i].ZmniejszIloscProduktu();
+                    mojKoszyk[i].PoliczNowaWartoscProduktu();
+                    _sprawdzenieCzyJest = true;
+                }
+                
+
+            }
+            if (_sprawdzenieCzyJest == false)
+            {
+                Console.WriteLine($"W koszyku nie ma produktu o kodzie {_kodUsuwanego}");
             }
 
         }

@@ -32,7 +32,17 @@ namespace Lista_zakupow_wersja2
             KoszJarek.DodajDoKoszyka(Produkt6);
             KoszJarek.PodsumujKoszyk();
             Console.WriteLine("***************************");
-
+            KoszJarek.UsunZKoszyka(401);
+            KoszJarek.PodsumujKoszyk();
+            Console.WriteLine("***************************");
+            KoszJarek.UsunZKoszyka(401);
+            KoszJarek.PodsumujKoszyk();
+            Console.WriteLine("***************************");
+            KoszJarek.UsunZKoszyka(401);
+            KoszJarek.PodsumujKoszyk();
+            Console.WriteLine("***************************");
+            KoszJarek.UsunZKoszyka(401);
+            KoszJarek.PodsumujKoszyk();
             Console.ReadLine();
         }
     }

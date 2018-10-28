@@ -27,6 +27,10 @@ namespace Lista_zakupow_wersja2
         {
             Krotnosc = Krotnosc + 1;
         }
+        public void ZmniejszIloscProduktu()
+        {
+            Krotnosc = Krotnosc - 1;
+        }
         public void PoliczNowaWartoscProduktu()
         {
             Wartosc = Krotnosc * Cena;
