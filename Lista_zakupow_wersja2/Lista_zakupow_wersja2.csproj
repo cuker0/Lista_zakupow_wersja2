@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ICeny.cs" />
     <Compile Include="Koszyk.cs" />
+    <Compile Include="PozycjaKoszyka.cs" />
     <Compile Include="Produkt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,20 +8,21 @@ namespace Lista_zakupow_wersja2
 {
     class Koszyk : ICeny
     {
-        List<Produkt> mojKoszyk;
-        public Koszyk()
+        List<PozycjaKoszyka> mojKoszyk;// = new List<Produkt>();
+
+       public Koszyk()
         {
-            mojKoszyk = new List<Produkt>();
-        }
+            mojKoszyk = new List<PozycjaKoszyka>();
+       }
         
-            
              
         public void WyswietlKoszyk()
         {
             Console.WriteLine("W koszyku mamy:");
             for (int i = 0; i < mojKoszyk.Count; i++)
             {
-                Console.WriteLine($"Kod produktu: {mojKoszyk[i].KodProduktu} Nazwa produktu : {mojKoszyk[i].Nazwa} Opis produktu : {mojKoszyk[i].OpisProduktu} Cena: {mojKoszyk[i].Cena} zł Ilosc sztuk {mojKoszyk[i].Krotnosc} Wartosc w koszyku {mojKoszyk[i].Wartosc} zł ");
+                Produkt produkt = mojKoszyk[i].Produkt;
+                Console.WriteLine($"Kod produktu: {produkt.KodProduktu} Nazwa produktu : {produkt.Nazwa} Opis produktu : {produkt.OpisProduktu} Cena: {produkt.Cena} zł Ilosc sztuk {mojKoszyk[i].Krotnosc} Wartosc w koszyku {mojKoszyk[i].Wartosc} zł ");
             }
 
         }
